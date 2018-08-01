@@ -32,9 +32,6 @@ class Experiment():
         win = visual.Window(res, monitor="testMonitor", units="norm")
         self.win = win
 
-        # create a tracker object
-        mouz = event.Mouse(win=win)
-
         # create stimuli
         fixation = visual.GratingStim(win=win, size=0.02, pos=[0,0], sf=0, rgb=-1)
         # image1 = visual.ImageStim(win=win, image="test.jpg")
@@ -86,22 +83,21 @@ class Experiment():
             mousebreak = False
             t = time.time()
             while (time.time() - t < stimulus_display_time) and not mousebreak:
-                mp = mouz.getPos()
-                self.on_data(mp[0], mp[1])
+             #   mp = mouz.getPos()
+             #   self.on_data(mp[0], mp[1])
 
                 # check if mouse inside aoi
-                if aoi[0] < mp[0] and mp[0] < aoi[1] and \
-                   aoi[2] < mp[1] and mp[1] < aoi[3]:
-                    print("inside")
-                else:
-                    print(mp)
+              #  if aoi[0] < mp[0] and mp[0] < aoi[1] and \
+              #     aoi[2] < mp[1] and mp[1] < aoi[3]:
+              #      print("inside")
+              #  else:
+             #       print(mp)
 
                 # flip other time to show empty screen
                 win.flip()
                 stm.draw()
                 # wait sometime that the loop dont get out of hand
                 core.wait(0.1)
-
 
 
             # wait for sometime
